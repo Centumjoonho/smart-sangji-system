@@ -1,0 +1,87 @@
+{% extends 'main/include/include.html' %}
+{% block style %}
+<style>
+    th:nth-child(1){
+        width : 5%;
+    }
+    th:nth-child(2){
+        width : 15%;
+    }
+    th:nth-child(3){
+        width : 10%;
+    }
+    th:nth-child(4){
+        width : 10%;
+    }
+    th:nth-child(5){
+        width : 10%;
+    }
+    th:nth-child(6){
+        width : 20%;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="pl-3 pr-3">
+    <h3 class="mb-3"
+        style="color: black;">{{title}}</h3>
+
+        <table class='table table-bordered'>
+            <tr>
+                <th colspan="4" style="text-align: center;">
+                    <span class="header">GACHON SMART PERFORMANCE REPORT</span>
+                </th>
+            </tr>
+            <tr>
+                <th>Date:</th>
+                <td>2023년 06월 30일</td>
+            </tr>
+            <tr>
+                <th>Name:</th>
+                <td colspan="5">{{user.profile.name}}</td>
+            </tr>
+            <tr>
+                <th>ID:</th>
+                <td colspan="5">{{user.username}}</td>
+            </tr>
+            <tr>
+                <th>Birth date:</th>
+                <td>{{user.profile.both}}</td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <th>Height:</th>
+                <td>178cm</td>
+                <th>Weight:</th>
+                <td>71kg</td>
+            </tr>
+            <tr>
+                <th>Gender:</th>
+                <td>{{user.profile.sex}}</td>
+                <th>Disability type:</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Exercise:</th>
+                <td>{{log.musclefunction_infomation_str}}</td>
+                <th>Set:</th>
+                <td>{{log.get_set_value}}</td>
+                <th>Count:</th>
+                <td>{{log.get_count_value}}</td>
+            </tr>
+        </table>
+
+        <div class="chart-section">            
+            {% if log.exercise_type == "musclefunction_isokinetic" %}
+                {% include 'analysis/user/fragment/isokinetic_chart_detail.html' %}
+            {% endif %}
+        </div>
+
+        <div class="data-section"> 
+        </div>
+
+</div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

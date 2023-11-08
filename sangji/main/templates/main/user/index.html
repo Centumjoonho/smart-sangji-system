@@ -1,0 +1,55 @@
+{% extends 'main/include/include.html' %}
+
+{% block content %}
+<div class="pl-3 pr-3">
+    <h3 style="color : black;">사용자 운동 기록</h3>
+    <table class='table table-sm table-bordered'>
+        <thead class='text-center thead-dark' style="color : black;">
+            <th></th>
+            <th>이름</th>
+            <th>성별</th>
+            <th>연령</th>
+            <th>신장</th>
+            <th>몸무게</th>
+            <th>장애유형</th>
+            <th>팔꿈치굴곡(좌)</th>
+            <th>팔꿈치굴곡(우)</th>
+            <th>팔꿈치신전(좌)</th>
+            <th>팔꿈치신전(우)</th>
+            <th>어깨외전(좌)</th>
+            <th>어깨외전(우)</th>
+            <th>어깨내전(좌)</th>
+            <th>어깨내전(우)</th>
+            <th>어깨굴곡(좌)</th>
+            <th>어깨굴곡(우)</th>
+            <th>어깨신전(좌)</th>
+            <th>어깨신전(우)</th>
+        </thead>
+        <tbody>
+        {% for infomation in infomations %}
+        <tr class='text-center'>
+            <td><input type="button" class="btn btn-primary" value="운동기록 확인" style="font-size : 11px; width : 100px;" onclick="window.location.href='/log/{{infomation.uuid}}'"/></td>
+            <td>{{infomation.user_name|default_if_none:"·"}}</td>
+            <td>{{infomation.user_sex|default_if_none:"·"}}</td>
+            <td>{{infomation.user_age|default_if_none:"·"}}</td>
+            <td>{{infomation.user_height|default_if_none:"·"}}</td>
+            <td>{{infomation.user_weight|default_if_none:"·"}}</td>
+            <td>{{infomation.user_handicapped_type|default_if_none:"·"}}</td>
+            <td>{{infomation.left_elbow_flextion_avg_angle|default_if_none:"·"}}</td>
+            <td>{{infomation.right_elbow_flextion_avg_angle|default_if_none:"·"}}</td>
+            <td>{{infomation.left_elbow_extension_avg_angle|default_if_none:"·"}}</td>
+            <td>{{infomation.right_elbow_extension_avg_angle|default_if_none:"·"}}</td>
+            <td>{{infomation.left_shoulder_abduction_avg_angle|default_if_none:"·"}}</td>
+            <td>{{infomation.right_shoulder_abduction_avg_angle|default_if_none:"·"}}</td>
+            <td>{{infomation.left_shoulder_adduction_avg_angle|default_if_none:"·"}}</td>
+            <td>{{infomation.right_shoulder_adduction_avg_angle|default_if_none:"·"}}</td>
+            <td>{{infomation.left_shoulder_flextion_avg_angle|default_if_none:"·"}}</td>
+            <td>{{infomation.right_shoulder_flextion_avg_angle|default_if_none:"·"}}</td>
+            <td>{{infomation.left_shoulder_extension_avg_angle|default_if_none:"·"}}</td>
+            <td>{{infomation.right_shoulder_extension_avg_angle|default_if_none:"·"}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'main/include/include.html' %}
+
+{% block content %}
+<div class="pl-3 pr-3">
+    <h3 style="color: black;">유저 목록</h3>
+
+    <div class="form-row align-items-center mb-3">
+        <div class="col-auto">
+            <label class="sr-only" for="search-input">검색어</label>
+            <input type="text" class="form-control" id="search-input" name="search" placeholder="검색어">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary" id="search-button">검색</button>
+        </div>
+        <div class="col-auto ml-auto">
+            <label class="mr-2" for="per-page-select">페이지 당 개수:</label>
+            <select class="form-control" id="per-page-select" name="per_page">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+    </div>
+
+    <table class="table table-sm table-bordered">
+        <thead class="text-center thead-dark" style="color: black;">
+            <tr>
+                <th>No</th>
+                <th>ID</th>
+                <th>이름</th>
+                <th>성별</th>
+                <th>생년월일</th>
+                <th>연락처</th>
+                <th>이메일</th>
+                <th>최근 운동일자</th>
+                {% comment %} <th>Option</th> {% endcomment %}
+            </tr>
+        </thead>
+        <tbody id="user-list">
+            {% include 'analysis/user/user_items.html' %}
+        </tbody>
+    </table>
+    <nav class="pagination-section" aria-label="Pagination">
+        <ul class="pagination justify-content-center">
+            {% include 'analysis/base/pagination.html' %}
+        </ul>
+    </nav>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    $(document).ready(function() {
+        // Search functionality
+        $('#search-button').click(function(e) {
+            e.preventDefault();
+            var searchKeyword = $('#search-input').val();
+            $.ajax({
+                type: 'GET',
+                url: '/analysis/search/user/',
+                data: {
+                    'search_keyword': searchKeyword,
+                },
+                success: function(response) {
+                    console.log(response);
+                    $('#user-list').html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        });
+    
+        // Page size change
+        $('#per-page-select').change(function() {
+            var perPage = $(this).val();
+            window.location.href = '/analysis/user?view_length=' + perPage;
+        });
+    });
+    </script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% for user in page_obj %}
+    <tr class="text-center">
+        <td>{{ page_obj.start_index|add:forloop.counter0 }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.profile.name }}</td>
+        <td>{{ user.profile.sex }}</td>
+        <td>{{ user.profile.both }}</td>
+        <td>{{ user.profile.phone }}</td>
+        <td>{{ user.profile.email }}</td>
+        <td>{{user.last_measure}}</td>
+        {% comment %} <td><a
+               class="btn btn-success btn-sm"
+               type="button" 
+               href="/analysis/user/{{user.username}}/report"
+            >리포트 발급</a></td> {% endcomment %}
+    </tr>
+{% endfor %}

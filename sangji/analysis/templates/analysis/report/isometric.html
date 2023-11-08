@@ -1,0 +1,176 @@
+{% load static %}
+<html>
+    <head>
+        <link href="{% static 'main/css/sb-admin-2.css' %}" rel="stylesheet">
+        <script src="{% static 'main/js/sb-admin-2.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <link href="{% static 'main/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+        <script src="{% static 'main/vendor/jquery/jquery.min.js'%} "></script>
+        <script src="{% static 'main/vendor/bootstrap/js/bootstrap.bundle.min.js'%} "></script>
+        <script src="{% static 'main/vendor/jquery-easing/jquery.easing.min.js'%} "></script>
+        <link href="{% static 'main/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+        <script src="{% static 'main/vendor/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'main/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            .header{
+                font-size : 30px;
+                color : black;
+            }
+            th {
+                color : black;
+            }
+        </style>
+    </head>
+    <body>
+        <table class='table table-bordered'>
+            <tr>
+                <th colspan="4" style="text-align: center;">
+                    <span class="header">GACHON SMART PERFORMANCE REPORT (ISOMETRIC)</span>
+                </th>
+            </tr>
+            <tr>
+                <th>Date:</th>
+                <td>2023년 06월 30일</td>
+            </tr>
+            <tr>
+                <th>Name:</th>
+                <td colspan="5">{{user.profile.name}}</td>
+            </tr>
+            <tr>
+                <th>ID:</th>
+                <td colspan="5">{{user.username}}</td>
+            </tr>
+            <tr>
+                <th>Birth date:</th>
+                <td>{{user.profile.both}}</td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <th>Height:</th>
+                <td>178cm</td>
+                <th>Weight:</th>
+                <td>71kg</td>
+            </tr>
+            <tr>
+                <th>Gender:</th>
+                <td>{{user.profile.sex}}</td>
+                <th>Disability type:</th>
+                <td></td>
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+                <td colspan="2">총길이:</td>
+                <td>cm</td>
+                <td>횟수:</td>
+                <td>회</td>
+                <td>측정시간:</td>
+            </tr>
+        </table>
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+        <table class="table table-bordered text-center">
+            <tr>
+                <th rowspan="2">Performance</th>
+                <th rowspan="2">위치(10분위)</th>
+                <th colspan="2">양손</th>
+                <th colspan="2">좌우차이</th>
+            </tr>
+            <tr>
+                <th>오른손</th>
+                <th>왼손</th>
+                <th>오른손</th>
+                <th>왼손</th>
+            </tr>
+            <tr>
+                <td>렛풀다운</td>
+                <td>최대값</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>평균값</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>비하인드렛풀다운</td>
+                <td>최대값</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>평균값</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>체스트프레스</td>
+                <td>최대값</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>평균값</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>싯드로우</td>
+                <td>최대값</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>평균값</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <script>
+            const ctx = document.getElementById('myChart');
+          
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                  label: '# of Votes',
+                  data: [12, 19, 3, 5, 2, 3],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+        </script>
+    </body>
+    
+</html>

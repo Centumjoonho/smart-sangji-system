@@ -1,0 +1,34 @@
+{% extends 'main/include/include.html' %}
+
+{% block content %}
+<div class="pl-3 pr-3">
+    <h3 style="color : black;">운동 기록</h3>
+    <div class='alert alert-danger'>
+        · 운동 기록은 <b>운동기능검사 - 등척성, 재활운동 - 등척성, 재활운동 - 등장성</b>에서 기록된 로그입니다.
+    </div>
+    <table class='table table-sm table-bordered'>
+        <thead class='text-center thead-dark' style="color : black;">
+            <th>유형</th>
+            <th>데이터 기록 일시</th>
+            <th>장력값</th>
+            <th>좌측 어깨 각</th>
+            <th>우측 어깨 각</th>
+            <th>좌측 팔꿈치 각</th>
+            <th>우측 팔꿈치 각</th>
+        </thead>
+        <tbody>
+        {% for log in logs %}
+            <tr class='text-center'>
+                <td>{{log.type}}</td>
+                <td>{{log.time}}</td>
+                <td>{{log.sensor_1}}</td>
+                <td>{{log.elbow_left_angle}}</td>
+                <td>{{log.elbow_right_angle}}</td>
+                <td>{{log.shoulder_right_angle}}</td>
+                <td>{{log.shoulder_left_angle}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>    
+    </table>
+</div>
+{% endblock %}

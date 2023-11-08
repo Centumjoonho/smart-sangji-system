@@ -1,0 +1,135 @@
+{% extends 'main/include/include.html' %}
+{% load humanize %}
+{% block style %}
+<style>
+    /* .table:nth-child(1){
+        width : 10%;
+    } */
+    #infomation-table{
+        width : 1000px;
+    }
+    #infomation-table td:nth-child(1){
+        width : 30%;
+        background-color: #f1f3f4;
+        color : #000;
+    }
+    #infomation-table td:nth-child(2){
+        color : #000;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="pl-3 pr-3">
+    <h5 style="color : black;">협응 게임 정보</h5>
+    <table class="table table-bordered" id="infomation-table">
+        <tr>
+            <td>검사자</td>
+            <td>{{moledatas.0.username}}</td>
+        </tr>
+        <tr>
+            <td>수행일시</td>
+            <td>{{moledatas.0.timeStr}}</td>
+        </tr>
+        <tr>
+            <td>그리드 사이즈</td>
+            <td>{{moledatas.0.grid_size}}</td>
+        </tr>
+    </table>
+    <hr>
+    <h5 style="color : black;">협응 게임 분석</h5>
+    <table class="table table-bordered" id="infomation-table">
+        <tr>
+            <td>잡은 두더지 수</td>
+            <td>{{mole_analysis_data.hit_count}}</td>
+        </tr>
+        <tr>
+            <td>전체 Pane 수</td>
+            <td>{{mole_analysis_data.pane_count}}</td>
+        </tr>
+        <tr>
+            <td>각각 두더지를 잡는데 걸린 시간</td>
+            <td>
+                {% for ms, s in mole_analysis_data.mole_catched_time %}
+                <div>{{forloop.counter}}번째 두더지 잡는데 걸린 시간 : {{s}}초 ({{ms|intcomma}}ms)</div>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>각각 두더지가 나타났던 좌표</td>
+            <td>
+                {% for position in mole_analysis_data.mole_position %}
+                <div>{{forloop.counter}}번째 두더지 위치 : {{position}}</div>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>각각 두더지를 잡을 때의 Pane 수</td>
+            <td>
+                {% for pane_list in mole_analysis_data.mole_pane.values %}
+                <div>{{forloop.counter}}번째 두더지를 잡을 때의 Pane 수 : {{pane_list|length}}</div>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>평균 반응시간</td>
+            <td>{{mole_analysis_data.avg_response_time|intcomma}}ms</td>
+        </tr>
+        <tr>
+            <td>평균 Pane</td>
+            <td>{{mole_analysis_data.avg_pane}}</td>
+        </tr>
+    </table>
+    <hr>
+    <h5 style="color : black;">협응 게임 상세 로그</h5>
+    <div class="row">
+        <div class="col-md-8">
+            <table class='table table-sm table-bordered'>
+                <thead class='text-center thead-dark' style="color : black;">
+                    <th>No</th>
+                    <th>timestamp</th>
+                    <th>시간</th>
+                    <th>잡은 두더지 수</th>
+                    <th>두더지 위치</th>
+                    <th>pane 수</th>
+                    <th>손 위치</th>
+                </thead>
+                <tbody>
+                {% for moledata in moledatas %}
+                <tr class='text-center'>
+                    <td >{{forloop.counter}}</td>
+                    <td >{{moledata.timestamp}}</td>
+                    <td >{{moledata.timeStr|date:"h:i:s"}}</td>
+                    <td >{{moledata.hit_count}}</td>
+                    <td >{{moledata.mole_position}}</td>
+                    <td >{{moledata.pane_count}}</td>
+                    <td >{{moledata.hammer_position}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <table class='table table-sm table-bordered'>
+                <thead class='text-center thead-dark' style="color : black;">
+                    <th>No</th>
+                    <th>timestamp</th>
+                    <th>시간</th>
+                    <th>각도 1 (겨드랑이)</th>
+                    <th>각도 2 (팔꿈치)</th>
+                </thead>
+                <tbody>
+                {% for moledata in moledatas_angle %}
+                <tr class='text-center'>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{moledata.timestamp}}</td>
+                    <td>{{moledata.timeStr|date:"h:i:s"}}</td>
+                    <td>{{moledata.angle_1}}</td>
+                    <td>{{moledata.angle_2}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

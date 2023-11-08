@@ -1,0 +1,53 @@
+{% extends 'main/include/include.html' %}
+
+{% block content %}
+<div class="pl-3 pr-3">
+    <h3 style="color: black;">리포트 발급</h3>
+    <div class='alert alert-info'>
+        · 유저의 운동 기록을 기반으로 리포트를 발급합니다.
+    </div>
+
+    <h3 style="color: black;" 
+        class="mb-4 mt-4"
+    >{{user.username}} 유저의 운동 기록</h3>
+    <h4 style="color: black;">등속성 운동</h4>
+    <table class="table table-sm table-bordered">
+        <thead class="text-center thead-dark" style="color: black;">
+            <tr>
+                <th>No</th>
+                <th>ID</th>
+            </tr>
+        </thead>
+        <tbody id="user-list">
+        </tbody>
+    </table>
+
+    <h4 style="color: black;">등속성 운동</h4>
+    <table class="table table-sm table-bordered">
+        <thead class="text-center thead-dark" style="color: black;">
+            <tr>
+                <th>No</th>
+                <th>ID</th>
+            </tr>
+        </thead>
+        <tbody id="user-list">
+        </tbody>
+    </table>
+
+    <h4 style="color: black;">ROM</h4>
+    <table class="table table-sm table-bordered">
+        <thead class="text-center thead-dark" style="color: black;">
+            <tr>
+                <th>No</th>
+                <th>ID</th>
+            </tr>
+        </thead>
+        <tbody id="user-list">
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

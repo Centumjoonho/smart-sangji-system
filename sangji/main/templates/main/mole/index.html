@@ -1,0 +1,29 @@
+{% extends 'main/include/include.html' %}
+{% block style %}
+<style>
+    .table:nth-child(1){
+        width : 10%;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="pl-3 pr-3">
+    <h3 style="color : black;">협응 게임 기록</h3>
+    <table class='table table-sm table-bordered'>
+        <thead class='text-center thead-dark' style="color : black;">
+            <th style="width : 10%;"></th>
+            <th style="width : 10%;">검사자</th>
+            <th>검사일시</th>
+        </thead>
+        <tbody>
+        {% for moledata in moledatas %}
+        <tr class='text-center'>
+            <td><input type="button" class="btn btn-primary" value="기록 확인" style="font-size : 11px; width : 100px;" onclick="window.location.href='/mole/log/main/{{moledata.game_id}}'"/></td>
+            <td>{{moledata.username}}</td>
+            <td>{{moledata.did_at}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

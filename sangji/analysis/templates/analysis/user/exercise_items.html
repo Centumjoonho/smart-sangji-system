@@ -1,0 +1,16 @@
+{% for obj in page_obj %}
+    <tr class="text-center">
+        <td>{{ page_obj.start_index|add:forloop.counter0 }}</td>
+        <td>{{ obj.user_id }}</td>
+        <td>{{ obj.musclefunction_infomation_str }}</td>
+        <td>{{ obj.get_exercise_value }}</td>
+        <td>{{ obj.get_hand_value }}</td>
+        <td>{{ obj.created_at }}</td>
+        <td>
+            <a type="button" 
+               class="btn btn-primary btn-sm" 
+               href="/analysis/user/exercise/detail/{{obj.pk}}"
+            />결과 조회</a>
+        </td>
+    </tr>
+{% endfor %}

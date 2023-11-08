@@ -1,0 +1,490 @@
+.community-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.community-item{
+    width : 150px;
+    height : 150px;
+    border: solid;
+    border-color: #32a1ce;
+    border-width: 0.5px;
+    margin-right : 5px;
+    cursor: pointer;
+    margin-top : 5px;
+}
+
+.community-category-item{
+    width : 150px;
+    height : 150px;
+    border: solid;
+    border-color: #32a1ce;
+    border-width: 0.5px;
+    margin-right : 5px;
+    cursor: pointer;
+}
+
+.community-cover {
+    width : 100%;
+    height : 100px;
+    text-align: center;
+}
+
+.community-desc{
+    padding : 5px;
+}
+
+.community-name {
+    font-size: 12px;
+    font-weight: bold;
+    color : #000;
+}
+
+.pull-right {
+    text-align: right;
+}
+
+.community-item-create, .speical-item-create {
+    width : 150px;
+    height : 150px;
+    border: solid;
+    border-color: #32a1ce;
+    border-width: 0.5px;
+    margin-right : 5px;
+    cursor: pointer;
+    margin-top : 5px;
+}
+
+.community__create__view{
+    margin-bottom: 10px;
+}
+
+.special-item {
+  width : 150px;
+  height : 150px;
+  border: solid;
+  border-color: #32a1ce;
+  border-width: 0.5px;
+  margin-right : 5px;
+  cursor: pointer;
+  margin-top : 5px;
+}
+
+.special-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.text {
+  font-size: 15px;
+  color: #515151;
+  letter-spacing: -1px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.small-text{
+  font-size: 15px;
+}
+
+.click {
+  cursor: pointer;
+}
+
+
+.review {
+  font-size: 14px;
+  border-top: 1px solid gray;
+  padding: 15px;
+}
+ul, dl,dt,dd {margin:0;padding:0;list-style:none}
+
+.no-visible {
+  display: none;
+}
+
+.visible-block {
+  display: block;
+}
+
+.visible-inline-block {
+  display: inline-block;
+}
+
+.re {
+  padding-left: 50px;
+}
+
+.re_review {
+  overflow: hidden;
+  height: 0;
+}
+
+
+.review li {
+  margin-right: 10px;
+  color: gray;
+}
+
+.review .bt {
+  font-size: 15px;
+  display: inline;
+}
+
+.review .review_close {
+  display: none;
+}
+
+.review .bt:hover {
+  color: #12afe2;
+}
+
+.review .li_1 {
+  float: left;
+  font-size: 15px;
+}
+
+.review .li_2 {
+  font-size: 15px;
+}
+
+.review .li_3 {
+  color: black;
+  font-size: 18px;
+  line-height: 45px;
+}
+
+
+/*
+채팅
+*/
+.chat-room {
+}
+
+.chat__body{
+  height : 800px;
+  overflow-y: scroll;
+  padding : 10px;
+}
+
+.chat__footer {
+}
+
+#chat-send-btn{
+  padding: 0 25px;
+  height: 40px;
+  font-size: 16px;
+  color: #303441;
+  background-color: #ffd400;
+  border-color: #ffd400;
+  border-radius: 4px !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-weight: bold;
+}
+
+.info__balloon{
+  text-align: center;
+  margin : 10px 0;
+}
+.general__balloon{
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 5px;
+}
+.message-mine {
+  flex-direction: row-reverse;
+}
+
+.message-send-at{
+  font-size: 12px !important;
+  color: #9a9ba7;
+  margin: 0 5px 2px 5px;
+}
+
+.message-balloon {
+  background: #f5f6fa;
+  padding: 15px 15px 14px 15px;
+  border-radius: 0 16px 16px 16px;
+  max-width: 390px;
+  display: inline-block;
+}
+
+.message-balloon-r {
+  padding: 15px 15px 14px 15px;
+  max-width: 390px;
+  background: rgb(254, 238, 125);
+  border-radius: 16px 0px 16px 16px;
+  display: inline-block;
+}
+
+/*
+ 상담
+*/
+#timelines-table th:nth-child(1){
+  width : 50%;
+}
+
+/**************************\
+  Basic Modal Styles
+\**************************/
+
+.modal {
+    display: none;
+  }
+  
+  .modal.is-open {
+    display: block;
+  }
+  
+  .modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal__container {
+    background-color: #fff;
+    padding: 30px;
+    width : 700px;
+    /* max-width: 500px; */
+    max-height: 100vh;
+    border-radius: 4px;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+  
+  .modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal__title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    color: #00449e;
+    box-sizing: border-box;
+  }
+
+  .modal__title_dark {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    color: #5a5c69;
+    box-sizing: border-box;
+  }
+  
+  .modal__close {
+    background: transparent;
+    border: 0;
+  }
+  
+  .modal__header .modal__close:before { content: "\2715"; }
+  
+  .modal__content {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    color: rgba(0,0,0,.8);
+  }
+  
+  .modal__btn {
+    font-size: .875rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    background-color: #e6e6e6;
+    color: rgba(0,0,0,.8);
+    border-radius: .25rem;
+    border-style: none;
+    border-width: 0;
+    cursor: pointer;
+    -webkit-appearance: button;
+    text-transform: none;
+    overflow: visible;
+    line-height: 1.15;
+    margin: 0;
+    will-change: transform;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    transition: -webkit-transform .25s ease-out;
+    transition: transform .25s ease-out;
+    transition: transform .25s ease-out,-webkit-transform .25s ease-out;
+  }
+  
+  .modal__btn:focus, .modal__btn:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+  
+  .modal__btn-primary {
+    background-color: #00449e;
+    color: #fff;
+  }
+
+  .modal__btn-danger {
+    background-color: #e74a3b ;
+    color: #fff;
+  }
+
+  .modal__btn-info {
+    background-color: #36b9cc;
+    color: #fff;
+  }
+
+  .modal__btn-dark{
+    background-color: #5a5c69;
+    color: #fff;
+  }
+
+  
+  
+  
+  
+  /**************************\
+    Demo Animation Style
+  \**************************/
+  @keyframes mmfadeIn {
+      from { opacity: 0; }
+        to { opacity: 1; }
+  }
+  
+  @keyframes mmfadeOut {
+      from { opacity: 1; }
+        to { opacity: 0; }
+  }
+  
+  @keyframes mmslideIn {
+    from { transform: translateY(15%); }
+      to { transform: translateY(0); }
+  }
+  
+  @keyframes mmslideOut {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10%); }
+  }
+  
+  .micromodal-slide {
+    display: none;
+  }
+  
+  .micromodal-slide.is-open {
+    display: block;
+  }
+  
+  .micromodal-slide[aria-hidden="false"] .modal__overlay {
+    animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  }
+  
+  .micromodal-slide[aria-hidden="false"] .modal__container {
+    animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+  }
+  
+  .micromodal-slide[aria-hidden="true"] .modal__overlay {
+    animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  }
+  
+  .micromodal-slide[aria-hidden="true"] .modal__container {
+    animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+  }
+  
+  .micromodal-slide .modal__container,
+  .micromodal-slide .modal__overlay {
+    will-change: transform;
+  }
+
+/* 상담실 */
+
+#client-body {
+  margin : 0;
+}
+
+#client-room {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#client-room #counselor-name{
+  font-size: 20px;
+  font-weight: bold;
+  color: #3b3b3b;
+}
+
+#client-room .section-1{
+  /* flex : 1; */
+  margin-top : 23px;
+  margin-left : 17px;
+  margin-right : 17px;
+  height : 30px;
+}
+
+#client-room .section-2{
+  flex : 1;  
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+#client-room .section-3{
+  /* flex : 1;  */
+  height : 59;
+  background-color: #ffba00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#client-room .section-3 .section-3-btn  {
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: -0.64;
+  color: #ffffff;
+}
+
+#client-room #local-video {
+  height : 124px;
+  width : 112px;
+  position: absolute;
+  top : 20px;
+  left : 20px;
+  z-index: 100;
+}
+
+#client-room #remote-video {
+  height : 100%;
+  width : 100%;
+}
+
+#client-room .chat-options{
+  position: absolute;
+  bottom : 10px;
+}
+
+#client-room .round {
+  height : 20px;
+  width : 20px;
+  border-radius: 30px;
+  padding : 12px;
+  background-color: #ffba00;
+  display: inline-block;
+  text-align: center;
+}
