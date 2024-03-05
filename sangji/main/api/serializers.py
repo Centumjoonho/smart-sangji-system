@@ -9,11 +9,12 @@ class ExternalExerciseLogSerializer(serializers.ModelSerializer):
     datetime_str = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
     type = serializers.SerializerMethodField()
+    id = serializers.SerializerMethodField()
 
     class Meta:
         model = ExternalExerciseLog
-        fields = ('user', 'user_id', 'excericse', 'exercise_type', 
-                  'datetime', 'repetition', 'datetime_str', 'created_at', 'type')
+        fields = ('id','user', 'user_id', 'excericse', 'exercise_type', 
+                  'datetime', 'repetition', 'datetime_str', 'created_at', 'type',)
 
 
     def get_datetime_str(self, obj):
@@ -29,4 +30,8 @@ class ExternalExerciseLogSerializer(serializers.ModelSerializer):
         return obj.datetime
     
     def get_type(self, obj):
-        return "outdoor"
+        return "outdoor"   
+    
+    # SerializerMethodField에 대응되는 get_ 메서드를 추가하여 id 값을 반환하도록 지정합니다.
+    def get_id(self, obj):
+        return obj.id

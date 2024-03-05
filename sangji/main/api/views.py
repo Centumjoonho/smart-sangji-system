@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.conf import settings
-
+from rest_framework import status
 
 from main.models import *
 from main.api.serializers import ExternalExerciseLogSerializer
@@ -102,7 +102,7 @@ class LoginAPI(APIView):
         if user:
             return Response({
                 "success" : True,
-                # "user" : user.username
+                "user" : user.username
             }, status=200)
         else:
             return Response({
@@ -119,21 +119,30 @@ class MuscleFunctionLogDataAPI(APIView):
         concat_data = []
 
         data = MuscleFunctionLogData.objects.filter(user_id=username)[:20]
+        
+     
         data_sr = MuscleFunctionLogDataSerializer(data, many=True).data
+        
 
         # ExternalExerciseLog Data
+        # REAL ROW DATA
         ext_data = ExternalExerciseLog.objects.filter(user=username)
-        ext_data_sr = ExternalExerciseLogSerializer(ext_data, many=True).data
+        print("ext_data ExternalExerciseLog")
+        
 
+        
+        ext_data_sr = ExternalExerciseLogSerializer(ext_data, many=True).data
+      
+         
         concat_data += data_sr 
         concat_data += ext_data_sr
 
         concat_data = sorted(concat_data, key=lambda x: x['created_at'], reverse=True)
-        
+       
         context = {
             'result' : concat_data
         }
-        
+     
         return Response(context, status=200)
         
 
@@ -145,25 +154,73 @@ class ExternalExerciseLogAPI(APIView):
         data_sr = ExternalExerciseLogSerializer(data, many=True).data
 
         print(data_sr)
+        
+        print("ExternalExerciseLogAPI ?? data_sr")
+        print(data_sr)
 
         context = {
             'result' : data_sr
         }
         
         return Response(context, status=200)
+    
+
+    def delete(self, request ,id):
+        
+        # DB 데이터 추출할때는 id 값도 str로 변경
+        str_id = str(id)
+
+        message = "성공적으로 삭제 되었습니다."
+        success = True
+
+        try:
+            instance = ExternalExerciseLog.objects.get(id=str_id)
+            instance.delete()
+            context = {
+            'success' : success,
+            'result' : message
+            }
+            return Response(context,status=200) 
+        
+        except ExternalExerciseLog.DoesNotExist:
+            return Response(status=404)
+      
+
 
     def post(self, request):
+        print("print(request.data)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         print(request.data)
         data = {
+            "id" : request.POST.get('id'),
             "excericse" : request.POST.get('exercise'),
             "repetition" : request.POST.get('repetition'),
             "datetime" : request.POST.get('date'),
             "user" : request.POST.get("username")
-        }
+        }    
+        
+
         message = "성공적으로 생성되었습니다."
         success = True
 
-        serializer = ExternalExerciseLogSerializer(data=data)
+        print("check data!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        if(data['id']):
+            print("있다")
+
+            print(type(data['id']))
+
+            # id 값이 있는지 확인하여 Serializer에 전달할 인스턴스 생성
+            # data['id'] 값과 동일한 데이터를 DB에서 가져온 인스턴스
+            instance = ExternalExerciseLog.objects.get(id=data["id"]) if "id" in data else None
+            
+            print(instance)
+            # 해당 코드가 이제 신규 수정 값을 기존 DB 값과 바꿔주는 역할
+            serializer = ExternalExerciseLogSerializer(instance=instance , data=data)
+    
+        else:
+            print("없다")
+            
+            serializer = ExternalExerciseLogSerializer(data=data)
+
         if serializer.is_valid():
             serializer.save()
         else:
